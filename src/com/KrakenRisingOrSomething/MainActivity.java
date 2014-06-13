@@ -54,6 +54,9 @@ public class MainActivity extends Activity
         s = s.replaceAll("\\s+", "");
         if (s.equals("")) return s;
         
+        if (contains("[^x]", s.replaceAll("[^a-zA-Z]", ""))) return s;
+        //if (contains("[^\\d\\.\\=\\-\\/\\*\\=\\x]", s)) return s;
+        
         /*System.out.println((s.contains("=") && !s.contains("x"))
                 + ", " + (s.contains("x") && !s.contains("="))
                 + ", " + (!contains("[\\+\\-\\*\\/][\\d\\.]+", s))
