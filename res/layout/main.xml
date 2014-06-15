@@ -3,33 +3,46 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:padding="10dp"
-    >
-<TextView
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:text='Enter an equation to solve or a linear expression to solve for variable "x"'
-    />
-<LinearLayout
-    android:layout_width="fill_parent"
-    android:layout_height="10dp"></LinearLayout>
-<EditText
-    android:id="@+id/expr"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:hint="Ex: 10x + 9 = 30/3*9, (x = 8.1)">
+    android:padding="10dp">
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text='Enter an equation to solve or a linear expression to solve for variable "x"'>
+    </TextView>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="10dp">
+    </LinearLayout>
+    <EditText
+        android:id="@+id/expr"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ex: 10x + 9 = 30*9/3, (x = 8.1)">
     </EditText>
-<LinearLayout
-    android:layout_width="fill_parent"
-    android:layout_height="10dp"></LinearLayout>
-<TextView
-    android:id="@+id/sol"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:minHeight="40dp"
-    android:text="Solution will display here as you type"
-    android:textColor="#000000"
-    android:background="#ffffff"
-    />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="10dp">
+    </LinearLayout>
+    <TextView
+        android:id="@+id/sol"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="40dp"
+        android:text="Solution will display here as you type"
+        android:textColor="#000000"
+        android:background="#ffffff">
+    </TextView>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+        <Button
+            android:id="@+id/toHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="More Examples"
+            android:layout_centerInParent="true">
+        </Button>
+    </RelativeLayout>
 </LinearLayout>
 

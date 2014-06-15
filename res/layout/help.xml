@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="10dp">
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height = "wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="You can enter in equations to find the result">
+    </TextView>
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height = "wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="8*9+10/4"
+        android:textColor="#000000"
+        android:background="#ffffff">
+    </TextView>
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height = "wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="x=74.5"
+        android:textColor="#000000"
+        android:background="#ffffff">
+    </TextView>
+    
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height = "wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="You can also enter expressions to find the value of a variable x (this would require an '=' sign to solve for x)">
+    </TextView>
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height = "wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="2x-9=8x+6*7"
+        android:textColor="#000000"
+        android:background="#ffffff">
+    </TextView>
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height = "wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="x=-8.5"
+        android:textColor="#000000"
+        android:background="#ffffff">
+    </TextView>
+    
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height = "wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="**The only characters that the calculator accepts are the variable x, the math symbols -, +, *, /, and digits and decimal points">
+    </TextView>
+    
+
+    
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+        <Button
+            android:id = "@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height = "wrap_content"
+            android:text = "Back">
+        </Button>
+    </RelativeLayout>
+</LinearLayout>

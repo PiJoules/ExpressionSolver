@@ -1,9 +1,12 @@
 package com.KrakenRisingOrSomething;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import java.util.Arrays;
@@ -15,6 +18,7 @@ public class MainActivity extends Activity
     
     EditText edit;
     TextView solution;
+    Button toHelp;
     
     /** Called when the activity is first created. */
     @Override
@@ -27,6 +31,7 @@ public class MainActivity extends Activity
         
         edit = (EditText) findViewById(R.id.expr);
         solution = (TextView) findViewById(R.id.sol);
+        toHelp = (Button) findViewById(R.id.toHelp);
         
         edit.addTextChangedListener(new TextWatcher(){
             public void afterTextChanged(Editable s){
@@ -42,6 +47,15 @@ public class MainActivity extends Activity
             }
         });
         
+        toHelp.setOnClickListener(new View.OnClickListener(){
+
+            public void onClick(View v) {
+                Intent helpScreen = new Intent(getApplicationContext(), HelpScreenActivity.class);
+                startActivity(helpScreen);
+            }
+            
+        });
+        
         System.out.println("done loading");
     }
     
@@ -51,30 +65,30 @@ public class MainActivity extends Activity
     
     private String solve(String s){
         
-        s = s.replaceAll("\\s+", "");
+        s = s.replaceAll("\\s+|\\(|\\)", "");
         if (s.equals("")) return s;
         
         if (contains("[^x]", s.replaceAll("[^a-zA-Z]", ""))) return s;
-        //if (contains("[^\\d\\.\\=\\-\\/\\*\\=\\x]", s)) return s;
-        
-        /*System.out.println((s.contains("=") && !s.contains("x"))
-                + ", " + (s.contains("x") && !s.contains("="))
-                + ", " + (!contains("[\\+\\-\\*\\/][\\d\\.]+", s))
-                + ", " + (contains("[^x\\d\\.\\+\\-\\*\\/]", s)));*/
         
         if (s.contains("=") && !s.contains("x")
                 || s.contains("x") && !s.contains("=")) return s;
         
-        
+      
+        if (s.substring(0,1).equals("x")) s = "1" + s;
         if (!s.contains("x")) s+= "=x";
         s = s.replaceAll("-", "+-")
                 .replaceAll("-x", "-1x")
                 .replaceAll("\\+x", "+1x")
                 .replaceAll("=x", "=1x");
         
-        String eval = evalMultiplication(s);
+        String eval = evalFraction(s);
         if (eval.equals("")) return s;
         s = eval;
+        
+        eval = evalMultiplication(s);
+        if (eval.equals("")) return s;
+        s = eval;
+        
         eval = evalDivision(s);
         if (eval.equals("")) return s;
         s = eval;
@@ -158,6 +172,22 @@ public class MainActivity extends Activity
             s = s.substring(0,start) + divide(s.substring(start, end)) + s.substring(end);
         }
         
+        return s;
+    }
+    
+    private double fractionToDecimal(String s){
+        s = s.replaceAll("\\/", "");
+        return 1/Double.parseDouble(s);
+    }
+    
+    private String evalFraction(String s){
+        while (s.contains("/")){
+            Pattern pattern = Pattern.compile("\\/[\\d\\.]+");
+            if (search(pattern, s, "start") == -1) return "";
+            int start = search(pattern, s, "start");
+            int end = search(pattern, s, "end");
+            s = s.substring(0,start) + "*" + fractionToDecimal(s.substring(start, end)) + s.substring(end);
+        }
         return s;
     }
     
